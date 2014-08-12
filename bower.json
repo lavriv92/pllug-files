@@ -1,0 +1,22 @@
+{
+  "name": "pllug-files",
+  "main": "index.js",
+  "version": "0.0.0",
+  "authors": [
+    "Ivan Lavriv <lavriv92@gmail.com>"
+  ],
+  "description": "file storage for PLLUG-community",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "backbone": "~1.1.2"
+  }
+}
