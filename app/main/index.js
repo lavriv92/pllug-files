@@ -2,7 +2,7 @@ var express = require('express');
 
 var main = express.Router();
 
-main.get('/', function (req, res) {
+main.get('/*', function (req, res) {
   res.render('main/index');
 });
 
