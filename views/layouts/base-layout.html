@@ -1,13 +1,21 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
+    <link href="/build/css/common.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <a href="/">Aaaa</a>
-    <a href="/test">Aaaa</a>
+    <header>
+      <div class="banner">
+        <h1>pllug files</h1>
+      </div>
+      <div id="login"></div>
+    </header>
+    <div id="main">
     {% block content %}
     {% endblock %}
+    </div>
+    <footer></footer>
     <script data-main="/js/main" src="/libs/requirejs/require.js"></script>
   </body>
 </html>
