@@ -17,9 +17,8 @@
   ],
   "dependencies": {
     "jquery": "~2.1.1",
-    "backbone": "~1.1.2",
-    "requirejs": "~2.1.14",
-    "requirejs-text": "~2.0.12",
-    "icomoon": "~0.0.1"
+    "angular": "~1.2.22",
+    "angular-resource": "~1.2.22",
+    "angular-ui-router": "~0.2.10"
   }
 }
