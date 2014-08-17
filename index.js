@@ -1,11 +1,9 @@
-var express = require('express');
-var swig = require('swig');
-//var mongoose = require('mongoose');
+var express = require('express'),
+    swig = require('swig'),
+    app = express();
 
-var app = express();
-
-var main = require('./app/main');
-var api = require('./app/api');
+var main = require('./app/main'),
+    api = require('./app/api');
 
 swig.setDefaults({cache: false});
 

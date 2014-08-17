@@ -19,7 +19,7 @@ userSchema.methods = {
   authenticate: function(password) {
     return utils.cryptPassword(password) == this.password;
   };
-}
+};
 
 
 exports.User = mongoose.model('User', userSchema);

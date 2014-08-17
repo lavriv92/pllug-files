@@ -1,5 +1,5 @@
-var express = require('express');
-var controllers = require('./controllers');
+var express = require('express'),
+    controllers = require('./controllers');
 
 var account = module.exports = express.Router();
 
