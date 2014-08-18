@@ -1,5 +1,7 @@
 var express = require('express'),
     swig = require('swig'),
+    mongoose = require('mongoose'),
+    bodyParser = require('body-parser'),
     app = express();
 
 var main = require('./app/main'),
@@ -13,9 +15,11 @@ app.set('view engine', 'html');
 app.set('views', './views');
 app.set('view cache', false);
 
+app.use(bodyParser());
+
 app.use(express.static('./public'));
 
-//mongoose.connect('mongodb://loclhost:27017/pllug-files');
+mongoose.connect('mongodb://localhost:27017/pllug-files');
 
 app.use('/api/v01', api);
 app.use(main);

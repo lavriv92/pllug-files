@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-var schema = mongoose.Schema;
+var Schema = mongoose.Schema;
 
 var utils = require('./utils');
 
@@ -22,7 +22,7 @@ userSchema.virtual('full_name').get(function() {
 userSchema.methods = {
   authenticate: function(password) {
     return utils.cryptPassword(password) == this.password;
-  };
+  }
 };
 
 
