@@ -14,6 +14,10 @@ var userSchema = new Schema({
   updated: {type: Date, default: Date.now}
 });
 
+userSchema.virtual('full_name').get(function() {
+  return this.first_name +' '+this.last_name;
+});
+
 
 userSchema.methods = {
   authenticate: function(password) {
