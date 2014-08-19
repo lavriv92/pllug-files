@@ -18,7 +18,6 @@ userSchema.virtual('full_name').get(function() {
   return this.first_name +' '+this.last_name;
 });
 
-
 userSchema.methods = {
   authenticate: function(password) {
     return utils.cryptPassword(password) == this.password;
