@@ -64,3 +64,30 @@ exports.updatePassword = function(req, res) {
     }
   });
 };
+
+
+exports.currentUser = function(req, res) {
+  User.findOne({_id: req.session.user_id}, function(err, user) {
+    if(err) {
+      res.json(err);
+    }
+    res.json(user);
+  });
+};
+
+
+exports.userLogin = function(req, res) {
+  User.findOne({username: req.body.username}, function(err, user) {
+    if(err) {
+      res.json(err);
+    }
+    res.json(user);
+  });
+};
+
+exports.userLogout = function(req, res) {
+  if(req.session.user_id !== undefined) {
+    delete req.session.user_id;
+  }
+  res.json(200);
+};
