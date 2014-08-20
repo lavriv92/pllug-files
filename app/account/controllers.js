@@ -9,6 +9,15 @@ exports.users = function (req, res) {
   });
 };
 
+exports.userDetails = function(req, res) {
+  User.findOne({_id: req.params.id}, function(err, user) {
+    if(err) {
+      res.json(err);
+    }
+    res.json(user);
+  });
+};
+
 exports.createUser = function (req, res) {
   var user = new User(req.body);
 
@@ -16,10 +25,42 @@ exports.createUser = function (req, res) {
     if(err) {
       res.json(err);
     }
+    res.json(201);
   });
 };
 
 
 exports.updateUser = function (req, res) {
-  res.send(200);
+  User.update({_id: req.params.id}, req.body, function(req, res) {
+    if(err) {
+      res.json(err);
+    }
+    res.json(user);
+  });
+};
+
+exports.updatePassword = function(req, res) {
+  var password1 = req.body.password1;
+  var password2 = req.body.password2;
+
+  User.findOne({_id: req.params.id}, function(err, user) {
+    if(err) {
+      res.json(err);
+    }
+
+    if(password1 == password2 && user.id = req.session.user_id) {
+      user.password = req.body.new_password;
+
+      user.save(function(err) {
+        if(err) {
+          res.json(err);
+        }
+        res.send(200);
+      });
+    } else {
+      res.json(400, {
+        'message': 'Password is invalid'
+      });
+    }
+  });
 };
