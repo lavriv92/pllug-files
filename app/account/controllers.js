@@ -4,8 +4,9 @@ exports.users = function (req, res) {
   User.find({}, function(err, users) {
     if(err) {
       res.json(err);
+    } else {
+      res.json(users);
     }
-    res.json(users);
   });
 };
 
@@ -13,8 +14,9 @@ exports.userDetails = function(req, res) {
   User.findOne({_id: req.params.id}, function(err, user) {
     if(err) {
       res.json(err);
-    }
-    res.json(user);
+    } else {
+      res.json(user);
+    };
   });
 };
 
@@ -24,8 +26,9 @@ exports.createUser = function (req, res) {
   user.save(function(err) {
     if(err) {
       res.json(err);
+    } else {
+      res.send(201);
     }
-    res.json(201);
   });
 };
 
@@ -34,8 +37,9 @@ exports.updateUser = function (req, res) {
   User.update({_id: req.params.id}, req.body, function(req, res) {
     if(err) {
       res.json(err);
+    } else {
+      res.json(user);
     }
-    res.json(user);
   });
 };
 
@@ -54,8 +58,9 @@ exports.updatePassword = function(req, res) {
       user.save(function(err) {
         if(err) {
           res.json(err);
+        } else {
+          res.send(200);
         }
-        res.send(200);
       });
     } else {
       res.json(400, {
@@ -70,8 +75,9 @@ exports.currentUser = function(req, res) {
   User.findOne({_id: req.session.user_id}, function(err, user) {
     if(err) {
       res.json(err);
+    } else {
+      res.json(user);
     }
-    res.json(user);
   });
 };
 
@@ -80,14 +86,16 @@ exports.userLogin = function(req, res) {
   User.findOne({username: req.body.username}, function(err, user) {
     if(err) {
       res.json(err);
+    } else {
+      res.json(user);
     }
-    res.json(user);
   });
 };
 
 exports.userLogout = function(req, res) {
   if(req.session.user_id !== undefined) {
     delete req.session.user_id;
+  } else {
+    res.json(200);
   }
-  res.json(200);
 };
