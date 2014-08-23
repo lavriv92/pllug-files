@@ -23,18 +23,18 @@ exports.userDetails = function(req, res) {
 exports.createUser = function (req, res) {
   var user = new User(req.body);
 
-  user.save(function(err) {
+  user.save(function(err, user) {
     if(err) {
       res.json(err);
     } else {
-      res.send(201);
+      res.send(user, 201);
     }
   });
 };
 
 
 exports.updateUser = function (req, res) {
-  User.update({_id: req.params.id}, req.body, function(req, res) {
+  User.update({_id: req.params.id}, req.body, function(err, user) {
     if(err) {
       res.json(err);
     } else {
@@ -87,10 +87,17 @@ exports.userLogin = function(req, res) {
     if(err) {
       res.json(err);
     } else {
-      res.json(user);
+      if (user.authenticate(req.body.password)) {
+        res.json(200);
+      } else {
+        res.json({
+          message: "Authentication failed"
+        });
+      }
     }
   });
 };
+
 
 exports.userLogout = function(req, res) {
   if(req.session.user_id !== undefined) {

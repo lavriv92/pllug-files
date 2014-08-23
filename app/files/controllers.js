@@ -43,7 +43,14 @@ exports.filesList = function(req, res) {
 
 
 exports.addDirectory = function(req, res) {
-  res.send('add directory');
+  var directory = Directory(req.body);
+  directory.save(function(err, user) {
+    if(err) {
+      res.json(err);
+    } else {
+      res.json(user, 201);
+    }
+  });
 };
 
 
@@ -55,5 +62,3 @@ exports.addFile = function(req, res) {
 exports.removeFile = function(req, res) {
   res.send('remove file');
 };
-
-
