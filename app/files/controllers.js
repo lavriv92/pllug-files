@@ -12,6 +12,7 @@ exports.directoriesList = function(req, res) {
   }) 
 };
 
+
 exports.childrenDirectoriesList = function(req, res) {
   var parentDir = req.body.parentDir; 
   Directory.find({parent: parentDir}, function(err, directories) {

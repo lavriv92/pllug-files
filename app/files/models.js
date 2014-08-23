@@ -27,5 +27,3 @@ var directorySchema = new Schema({
 
 exports.File = mongoose.model('File', fileSchema);
 exports.Directory = mongoose.model('Directory', directorySchema);
-
-
