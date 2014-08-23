@@ -7,7 +7,12 @@ var utils = require('./utils');
 var userSchema = new Schema({
   username: {type: String, required: true, unique: true},
   email: {type: String, required: true, unique: true},
-  password: {type: String, required: true, set: utils.cryptPassword},
+  password: {
+    type: String,
+    select: false,
+    required: true,
+    set: utils.cryptPassword
+  },
   first_name: {type: String},
   last_name: {type: String},
   created: {type: Date, default: Date.now},

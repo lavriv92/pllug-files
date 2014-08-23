@@ -52,7 +52,7 @@ exports.updatePassword = function(req, res) {
       res.json(err);
     }
 
-    if(password1 == password2 && user.id = req.session.user_id) {
+    if(password1 === password2 && user._id = req.session.user_id) {
       user.password = req.body.new_password;
 
       user.save(function(err) {
