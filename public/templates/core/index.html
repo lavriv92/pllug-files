@@ -1,0 +1,10 @@
+<h1>Index page</h1>
+
+<div class="content">
+  <ul>
+    <li ng-repeat="user in users">
+      {{ user.username }} ({{ user.email }})
+      <a href="/account/{{ user._id }}/update">Update</a>
+    </li>
+  </ul>
+</div>

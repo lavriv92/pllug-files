@@ -10,6 +10,7 @@ exports.users = function (req, res) {
   });
 };
 
+
 exports.userDetails = function(req, res) {
   User.findOne({_id: req.params.id}, function(err, user) {
     if(err) {
@@ -19,6 +20,7 @@ exports.userDetails = function(req, res) {
     };
   });
 };
+
 
 exports.createUser = function (req, res) {
   var user = new User(req.body);
@@ -36,12 +38,11 @@ exports.createUser = function (req, res) {
 exports.updateUser = function (req, res) {
   User.update({_id: req.params.id}, req.body, function(err, user) {
     if(err) {
-      res.json(err);
-    } else {
       res.json(user);
     }
   });
 };
+
 
 exports.updatePassword = function(req, res) {
   var password1 = req.body.password1;
