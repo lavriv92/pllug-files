@@ -7,7 +7,11 @@ var storage = module.exports = function(fPath) {
 };
 
 storage.prototype = {
-  createDir: function() {
-    console.log('');
+  getPath: function(dirPath) {
+    return path.join(this.path, dirPath);
+  },
+
+  createDir: function(dirName) {
+    fs.mkdir(this.getPath(dirName));
   };
 };
