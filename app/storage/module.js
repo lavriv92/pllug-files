@@ -3,7 +3,7 @@ var fs = require('fs'),
 
 var storage = module.exports = function(fPath) {
   var self = this;
-  this.path = this.path || '.';
+  this.path = fPath || '.';
 };
 
 storage.prototype = {
@@ -11,7 +11,45 @@ storage.prototype = {
     return path.join(this.path, dirPath);
   },
 
-  createDir: function(dirName) {
-    fs.mkdir(this.getPath(dirName));
-  };
+  newDir: function(name, next) {
+    fs.mkdir(this.getPath(name), function(err) {
+      if(err) {
+        next(err);
+      }
+    });
+  },
+
+  rmDir: function(name, next) {
+    fs.rmdir(this.getPath(name), function(err) {
+      if(err) {
+        next(err);
+      }
+    });
+  },
+
+  renameDir: function(oldPath, newPath, next) {
+    fs.rename(
+      this.getPath(oldPath),
+      this.getPath(newPath),
+      function(err) {
+        next(err);
+      }
+    );
+  },
+
+  createFile: function(fpath, content) {
+    fs.writeFile(this.getPath(fpath), content, function(err) {
+      if(err) {
+        next(err);
+      }
+    });
+  },
+
+  removeFile: function(fpath) {
+    fs.unlinlFile(this.getPath(fpath), function(err) {
+      if(err) {
+        next(err);
+      }
+    });
+  }
 };
