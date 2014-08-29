@@ -1,4 +1,5 @@
-var User = require('./models').User;
+var User = require('./models').User,
+    Storage = require('../storage').Storage;
 
 exports.users = function (req, res) {
   User.find({}, function(err, users) {
@@ -23,14 +24,20 @@ exports.userDetails = function(req, res) {
 
 
 exports.createUser = function (req, res) {
-  var user = new User(req.body);
+  var user = new User(req.body),
+      storage = new Storage();
 
-  user.save(function(err, user) {
-    if(err) {
-      res.json(err);
-    } else {
-      res.send(user, 201);
-    }
+  storage.newDir(user.username, function(absPath) {
+    user.save(function(err) {
+      if(err) {
+        res.status(400).json(err);
+      } else {
+        res.status(201).json(user)
+      }
+    });
+  }, 
+  function(err) {
+    res.status(500).json(err);
   });
 };
 

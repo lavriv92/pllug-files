@@ -11,10 +11,13 @@ storage.prototype = {
     return path.join(this.path, dirPath);
   },
 
-  newDir: function(name, next) {
-    fs.mkdir(this.getPath(name), function(err) {
+  newDir: function(name, successCallback, errorCallback) {
+    var p = this.getPath(name);
+    fs.mkdir(p, function(err) {
       if(err) {
-        next(err);
+        errorCallback(err);
+      } else {
+        successCallback(p);
       }
     });
   },
