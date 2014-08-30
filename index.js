@@ -5,7 +5,8 @@ var express = require('express'),
     app = express();
 
 var main = require('./app/main'),
-    api = require('./app/api');
+    api = require('./app/api'),
+    config = require('./app/config/config');
 
 swig.setDefaults({cache: false});
 
@@ -19,7 +20,7 @@ app.use(bodyParser());
 
 app.use(express.static('./public'));
 
-mongoose.connect('mongodb://localhost:27017/pllug-files');
+mongoose.connect(config.db.uri);
 
 app.use('/api/v01', api);
 app.use(main);

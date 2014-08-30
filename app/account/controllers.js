@@ -1,5 +1,6 @@
 var User = require('./models').User,
-    Storage = require('../storage').Storage;
+    config = require('../config/config'),
+    Storage = require('../storage');
 
 exports.users = function (req, res) {
   User.find({}, function(err, users) {
@@ -25,7 +26,7 @@ exports.userDetails = function(req, res) {
 
 exports.createUser = function (req, res) {
   var user = new User(req.body),
-      storage = new Storage();
+      storage = new Storage(config.storagePath);
 
   storage.newDir(user.username, function(absPath) {
     user.save(function(err) {
