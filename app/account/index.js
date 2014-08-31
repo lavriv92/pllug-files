@@ -10,5 +10,3 @@ account.get('/users/:id/', controllers.userDetails);
 account.put('/users/:id', controllers.updateUser);
 account.post('/users/:id/update_password', controllers.updatePassword);
 
-account.post('/account/login/', controllers.userLogin);
-account.post('/account/logout/', controllers.userLogout);

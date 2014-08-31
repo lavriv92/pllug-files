@@ -9,7 +9,6 @@ var userSchema = new Schema({
   email: {type: String, required: true, unique: true},
   password: {
     type: String,
-    select: false,
     required: true,
     set: utils.cryptPassword
   },

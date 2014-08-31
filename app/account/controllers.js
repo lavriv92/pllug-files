@@ -29,7 +29,7 @@ exports.createUser = function (req, res) {
       storage = new Storage(config.storagePath);
 
   storage.newDir(user.username, function(absPath) {
-    user.save(function(err) {
+    user.save(function(err, user) {
       if(err) {
         res.status(400).json(err);
       } else {
@@ -88,30 +88,4 @@ exports.currentUser = function(req, res) {
       res.json(user);
     }
   });
-};
-
-
-exports.userLogin = function(req, res) {
-  User.findOne({username: req.body.username}, function(err, user) {
-    if(err) {
-      res.json(err);
-    } else {
-      if (user.authenticate(req.body.password)) {
-        res.json(200);
-      } else {
-        res.json({
-          message: "Authentication failed"
-        });
-      }
-    }
-  });
-};
-
-
-exports.userLogout = function(req, res) {
-  if(req.session.user_id !== undefined) {
-    delete req.session.user_id;
-  } else {
-    res.json(200);
-  }
 };

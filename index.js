@@ -6,6 +6,7 @@ var express = require('express'),
 
 var main = require('./app/main'),
     api = require('./app/api'),
+    auth = require('./app/auth'),
     config = require('./app/config/config');
 
 swig.setDefaults({cache: false});
@@ -17,11 +18,14 @@ app.set('views', './views');
 app.set('view cache', false);
 
 app.use(bodyParser());
-
 app.use(express.static('./public'));
+//app.use(express.session({
+  //secret: config.secret
+//}));
 
 mongoose.connect(config.db.uri);
 
+app.use('/auth/', auth);
 app.use('/api/v01', api);
 app.use(main);
 

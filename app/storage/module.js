@@ -6,6 +6,7 @@ var storage = module.exports = function(fPath) {
   this.path = fPath || '.';
 };
 
+
 storage.prototype = {
   getPath: function(dirPath) {
     return path.join(this.path, dirPath);
@@ -22,20 +23,24 @@ storage.prototype = {
     });
   },
 
-  rmDir: function(name, next) {
+  rmDir: function(name, successCallback, errorCallback) {
     fs.rmdir(this.getPath(name), function(err) {
       if(err) {
-        next(err);
+        errorCallback(err);
+      } else {
+        successCallback(name);
       }
     });
   },
 
-  renameDir: function(oldPath, newPath, next) {
+  renameDir: function(oldPath, newPath, successCallback, errorCallback) {
     fs.rename(
       this.getPath(oldPath),
       this.getPath(newPath),
       function(err) {
-        next(err);
+        errorCallback(err);
+      } else {
+        successCallback();
       }
     );
   },

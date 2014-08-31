@@ -1,6 +1,10 @@
 var models = require('./models'),
-    File = models.File,
+    Storage = require('../storage'),
+    config = require('../config/config');
+    
+var File = models.File,
     Directory = models.Directory;
+
 
 exports.directoriesList = function(req, res) {
   Directory.find({}, function(err, directories) {
@@ -47,14 +51,22 @@ exports.filesList = function(req, res) {
 };
 
 
-exports.addDirectory = function(req, res) {
+exports.createDirectory = function(req, res) {
   var directory = Directory(req.body);
-  directory.save(function(err, user) {
-    if(err) {
-      res.status(400).json(err);
-    } else {
-      res.status(201).json(user);
-    }
+  var storage = new Storage(config.storagePath);
+
+  storage.newDir(function(p) {
+    directory.path = p;
+    directory.save(function(err, directory) {
+      if(err) {
+        res.status(400).json(err);
+      } else {
+        res.status(201).json(directory);
+      }
+    });
+  },
+  function(err) {
+    res.status(500).json(err);
   });
 };
 
@@ -62,11 +74,11 @@ exports.addDirectory = function(req, res) {
 exports.addFile = function(req, res) {
   var file = new File(req.body);
   file.save(function(err, file) {
-      if(err) {
-        res.status(400).json(err);
-      } else {
-        res.status(201).json(file);
-      }
+    if(err) {
+      res.status(400).json(err);
+    } else {
+      res.status(201).json(file);
+    }
   });
 };
 

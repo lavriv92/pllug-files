@@ -1,0 +1,23 @@
+{% block content %}
+<div class="content account">
+  <form method="POST" class="login-form">
+    <div class="row">
+      <div class="input-row">
+        <input placeholder="username" type="username" name="username"/>
+        <small>
+          {{ errors.username }}
+        </small>
+      </div>
+      <div class="input-row">
+        <input placeholder="password" type="password" name="password"/>
+        <small>
+          {{ errors.password }}
+        </small>
+      </div>
+      <div class="input-row">
+        <button>login</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}

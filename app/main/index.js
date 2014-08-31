@@ -1,9 +1,8 @@
-var express = require('express');
+var express = require('express'),
+    middlewares = require('../auth/middlewares');
 
-var main = express.Router();
+var main = module.exports = express.Router();
 
-main.get('/*', function (req, res) {
+main.get('/*', middlewares.requiresLogin, function (middleware, req, res) {
   res.render('main/index');
 });
-
-module.exports = main;
