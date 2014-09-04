@@ -5,13 +5,11 @@
   font-weight: normal;
 }
 
-.banner {
-  margin-left: 10px;
-  color: #f6f6f6;
+body {
+  width: 100%;
 }
 
-header {
-  height: 60px;
-  background: #1C758A;
-  line-height: 60px;
+.banner {
+  margin-left: 10px;
+  color: #f6f6f6
 }

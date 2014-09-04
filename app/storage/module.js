@@ -38,9 +38,11 @@ storage.prototype = {
       this.getPath(oldPath),
       this.getPath(newPath),
       function(err) {
-        errorCallback(err);
-      } else {
-        successCallback();
+        if(err) {
+          errorCallback(err);
+        } else {
+          successCallback();
+        }
       }
     );
   },

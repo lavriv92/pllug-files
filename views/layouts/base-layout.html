@@ -5,17 +5,19 @@
     <link href="/build/css/common.css" type="text/css" rel="stylesheet" />
   </head>
   <body>
-    <header>
+    <div>
+    <header class="navbar navbar-default">
       <div class="banner">
-        <h1>pllug files</h1>
+        <a class="navbar-brand">pllug files</a>
       </div>
       <div id="login"></div>
     </header>
-    <div id="main" ng-view>
+    <div class="container" id="main" ng-view>
     {% block content %}
     {% endblock %}
     </div>
     <footer></footer>
+    </div>
     <script src="/libs/angular/angular.js"></script>
     <script src="/libs/angular-route/angular-route.js"></script>
     <script src="/libs/angular-resource/angular-resource.js"></script>

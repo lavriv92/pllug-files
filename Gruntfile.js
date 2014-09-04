@@ -6,6 +6,7 @@ module.exports = function(grunt) {
         files: {
           './public/build/css/common.css': [
             './public/libs/icomoon/style.css',
+            './public/libs/bootstrap/dist/css/bootstrap.css',
             './public/css/base.css'
           ]
         }

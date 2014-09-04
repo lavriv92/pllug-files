@@ -2,6 +2,8 @@ var express = require('express'),
     swig = require('swig'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
+    session = require('express-session'),
+    mongoStore = require('connect-mongo'),
     app = express();
 
 var main = require('./app/main'),
@@ -19,9 +21,13 @@ app.set('view cache', false);
 
 app.use(bodyParser());
 app.use(express.static('./public'));
-//app.use(express.session({
-  //secret: config.secret
-//}));
+app.use(session({
+  store: new MongoStore({
+    collection: 'sessions',
+    url: config.db.uri
+  }),
+  secret: 'dsdsadsadsdsfdgfgfsdgfds'
+}));
 
 mongoose.connect(config.db.uri);
 
