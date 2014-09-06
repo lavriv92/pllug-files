@@ -3,7 +3,7 @@ var express = require('express'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
     session = require('express-session'),
-    mongoStore = require('connect-mongo'),
+    //mongoStore = require('connect-mongo')(express),
     app = express();
 
 var main = require('./app/main'),
@@ -22,10 +22,10 @@ app.set('view cache', false);
 app.use(bodyParser());
 app.use(express.static('./public'));
 app.use(session({
-  store: new MongoStore({
-    collection: 'sessions',
-    url: config.db.uri
-  }),
+  //store: new mongoStore({
+    //collection: 'sessions',
+    //db: config.db.uri
+  //}),
   secret: 'dsdsadsadsdsfdgfgfsdgfds'
 }));
 
