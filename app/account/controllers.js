@@ -16,9 +16,9 @@ exports.users = function (req, res) {
 exports.userDetails = function(req, res) {
   User.findOne({_id: req.params.id}, function(err, user) {
     if(err) {
-      res.json(err);
+      res.status(500).json(err);
     } else {
-      res.json(user);
+      res.status(200).json(user);
     };
   });
 };
