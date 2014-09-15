@@ -34,31 +34,36 @@ storage.prototype = {
   },
 
   renameDir: function(oldPath, newPath, successCallback, errorCallback) {
-    fs.rename(
-      this.getPath(oldPath),
-      this.getPath(newPath),
-      function(err) {
+    var oldp = this.getPath(oldPath),
+        newp = this.getPath(newPath);
+    fs.rename(oldp, newp, function(err) {
         if(err) {
           errorCallback(err);
         } else {
-          successCallback();
+          successCallback(newp);
         }
       }
     );
   },
 
-  createFile: function(fpath, content) {
-    fs.writeFile(this.getPath(fpath), content, function(err) {
+  createFile: function(fpath, content, successCallback, errorCallback) {
+    var p = this.getPath(fpath);
+    fs.writeFile(p, content, function(err) {
       if(err) {
-        next(err);
+        errorCallback(err);
+      } else {
+        successCallback(p);
       }
     });
   },
 
-  removeFile: function(fpath) {
-    fs.unlinlFile(this.getPath(fpath), function(err) {
+  removeFile: function(fpath, successCallback, errorCallback) {
+    var p = this.getPath(fpath);
+    fs.unlinkFile(p, function(err) {
       if(err) {
-        next(err);
+        errorCallback(err);
+      } else {
+        successCallback(p);
       }
     });
   }

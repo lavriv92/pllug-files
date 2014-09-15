@@ -73,16 +73,39 @@ exports.createDirectory = function(req, res) {
 
 exports.addFile = function(req, res) {
   var file = new File(req.body);
-  file.save(function(err, file) {
-    if(err) {
-      res.status(400).json(err);
-    } else {
-      res.status(201).json(file);
-    }
+  var storage = new Storage(config.storagePath);
+
+  storage.createFile(function(p) {
+    file.path = p;
+    file.save(function(err) {
+      if(err) {
+        res.status(400).json(err);
+      } else {
+        res.status(201).json(file);
+      }
+    });
+  }, 
+  function(err) {
+    res.status(500).json(err);
   });
 };
 
 
 exports.removeFile = function(req, res) {
-  res.send('remove file');
+  var storage = new Storage(config.storagePath);
+
+  File.findOne({_id: req.params.id}, function(err, file) {
+    if(err) {
+      res.json(err);
+    } else {
+      storage.removeFile(function() {
+        res.status(204).json({
+          message: "File removed"
+        });
+      },
+      function(err) {
+        res.status(500).json(err);
+      });
+    }
+  });
 };
