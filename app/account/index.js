@@ -9,4 +9,4 @@ account.post('/users', controllers.createUser);
 account.get('/users/:id/', controllers.userDetails);
 account.put('/users/:id', controllers.updateUser);
 account.post('/users/:id/update_password', controllers.updatePassword);
-
+account.get('/current', controllers.currentUser);

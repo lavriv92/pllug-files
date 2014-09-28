@@ -1,4 +1,1 @@
-angular.module('pllugFiles').
-  factory('CurrentUser', function() {
-    //--  
-  });
+angular.module('pllugFiles');

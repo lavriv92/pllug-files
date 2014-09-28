@@ -1,4 +1,6 @@
 angular.module('pllugFiles.account').
-  controller('AccountController', ['$scope', function($scope) {
-    $scope.user = user;
+  controller('AccountController', ['$scope', 'User', function($scope, User) {
+    User.query({}, function(data) {
+      $scope.users = data;
+    });
   }]);

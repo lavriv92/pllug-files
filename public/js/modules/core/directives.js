@@ -1,9 +1,22 @@
 angular.module('pllugFiles.core').
-  directive('leftMenu', [function() {
+  directive('leftPanel', ['CurrentUser', function(CurrentUser) {
     return {
-      template: '<h1></h1>'
-      link: function(scope) {
-        console.log('sfsdfdsfsd');
+      restrict: 'A',
+      templateUrl: '/templates/core/left-panel.html',
+      link: function(scope, elem) {
+
+        var panel = $(elem).find('#menu');
+
+        scope.hidden = true;
+
+        CurrentUser.then(function(user) {
+          scope.user = user;
+        });
+
+        scope.toggle = function() {
+          $(panel).fadeToggle();
+          scope.hidden = !scope.hidden;
+        }     
       }
-    }
+    };
   }]);

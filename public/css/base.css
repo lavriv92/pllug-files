@@ -13,3 +13,15 @@ body {
   margin-left: 10px;
   color: #f6f6f6
 }
+
+header {
+  background: #000;
+}
+
+.error {
+  color: red;
+}
+
+#main {
+  min-height: 800px;
+}

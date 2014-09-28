@@ -1,15 +1,16 @@
 angular.module('pllugFiles.core').
-  controller('IndexController', ['$scope', 'UserResource',
-      function($scope, UserResource) {
-    UserResource.query(function(users) {
-      $scope.users = users;
+  controller('IndexController', ['$scope', 'User', function($scope, User) {
+    $scope.$watch('choice', function(old, newV) {
+      console.log(old);
+      console.log(newV);
+
+      $scope.a = newV;
     });
   }]).
   controller('UpdateController', ['$scope', '$routeParams', 'UserResource', 
       function($scope, $routeParams, UserResource) {
         UserResource.get({id: $routeParams.id}, function(user) {
           $scope.user = user;
-          console.log(user);
         });
 
         $scope.save = function() {

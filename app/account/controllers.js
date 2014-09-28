@@ -81,11 +81,11 @@ exports.updatePassword = function(req, res) {
 
 
 exports.currentUser = function(req, res) {
-  User.findOne({_id: req.session.user_id}, function(err, user) {
-    if(err) {
-      res.json(err);
-    } else {
-      res.json(user);
-    }
-  });
+  if (req.session.hasOwnProperty('user')) {
+    res.status(200).json(req.session.user);
+  } else {
+    res.status(404).json({
+      message: 'current user not found'
+    });
+  }
 };
