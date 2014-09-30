@@ -13,7 +13,7 @@ exports.directoriesList = function(req, res) {
     } else {
       res.json(directories);
     }
-  }) 
+  }); 
 };
 
 
