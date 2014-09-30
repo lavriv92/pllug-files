@@ -1,7 +1,6 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-
 var fileSchema = new Schema({
   name: {type: String},
   path: {type: String, unique: true},

@@ -109,3 +109,21 @@ exports.removeFile = function(req, res) {
     }
   });
 };
+
+exports.removeDirectory = function() {
+  var storage = new Storage(config.storagePath);
+
+  Directory.findOne({_id: req.params.id}, function(err, directory) {
+    if (err) {
+      res.json(err);
+    } else {
+      storage.removeDirectory(function() {
+        res.status(204).json({
+          message: 'success'
+        });
+      }, function (err) {
+        res.status(500).json(err);
+      });
+    }
+  });
+};
