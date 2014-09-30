@@ -1,13 +1,17 @@
 angular.module('pllugFiles.account').
-  factory('CurrentUser', ['$q', 'CurrentUserResource', function($q, CurrentUserResource) {
-    var defered = $q.defer();
+  factory('CurrentUser', ['$q', 'CurrentUserResource', 
+      function($q, CurrentUserResource) {
+    var obj = {};
+
+    obj.user = $q.defer();
 
     CurrentUserResource.fetch(function(user) {
-      defered.resolve(user);
+      obj.user.resolve(user); 
     }, function(errors) {
-      defered.reject(errors);
+      obj.user.reject(errors);
     });
 
-    return defered.promise;
+    obj.update = function(data, successCallback, errorCallback) {};
 
+    return obj;
   }]);
