@@ -26,7 +26,7 @@ app.use(session({
     //collection: 'sessions',
     //db: config.db.uri
   //}),
-  secret: 'dsdsadsadsdsfdgfgfsdgfds'
+  secret: config.secretKey
 }));
 
 mongoose.connect(config.db.uri);

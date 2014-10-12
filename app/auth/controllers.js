@@ -36,3 +36,23 @@ exports.signOut = function() {
     res.redirect('/auth/sign-in/');
   });
 };
+
+//TODO: must be removed
+
+exports.fakeRegister = function(req, res) {
+  var template = 'auth/register'
+
+  if(req.method == 'GET') {
+    res.render(template);
+  } else {
+    var user = new User(req.body);
+    user.save(function(err) {
+      if(err) {
+        var context = {'err': err}
+        res.render(template, context);
+      } else {
+        res.redirect('/auth/register');
+      }
+    });
+  }
+};

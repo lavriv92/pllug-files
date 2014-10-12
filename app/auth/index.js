@@ -7,3 +7,7 @@ var auth = module.exports = express.Router();
 
 auth.get('/sign-in/', controllers.signIn);
 auth.post('/sign-in/', controllers.signIn);
+
+//TODO: must be removed
+auth.get('/register', controllers.fakeRegister);
+auth.post('/register', controllers.fakeRegister);
