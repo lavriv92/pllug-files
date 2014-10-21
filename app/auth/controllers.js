@@ -31,7 +31,8 @@ exports.signIn = function(req, res) {
 };
 
 
-exports.signOut = function() {
+exports.signOut = function(req, res) {
+  console.log(req.session);
   req.session.delete(function() {
     res.redirect('/auth/sign-in/');
   });
