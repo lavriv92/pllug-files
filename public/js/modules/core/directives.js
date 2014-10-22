@@ -9,7 +9,7 @@ angular.module('pllugFiles.core').
 
         scope.hidden = true;
 
-        CurrentUser.user.promise.then(function(user) {
+        CurrentUser.user.$promise.then(function(user) {
           scope.user = user;
         });
 
