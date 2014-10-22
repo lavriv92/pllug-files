@@ -3,4 +3,8 @@ angular.module('pllugFiles.account').
     User.query({}, function(data) {
       $scope.users = data;
     });
-  }]);
+  }]).controller('AccountEditController',['$scope','CurrentUser',function($scope,CurrentUser){
+
+}]);
+
+

@@ -6,7 +6,11 @@ pllugFiles.config(['$routeProvider', '$locationProvider', function($routeProvide
   when('/account/:id/update', {
     templateUrl: '/templates/core/account.html',
     controller: 'UpdateController'
-  });
+  }).
+    when('/account/edit',{
+        templateUrl: '/templates/account/edit.html',
+        controller: 'AccountEditController'
+    });
   
   $locationProvider.html5Mode(true).hashPrefix('!');
 }]);
