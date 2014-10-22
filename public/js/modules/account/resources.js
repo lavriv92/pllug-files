@@ -6,6 +6,6 @@ angular.module('pllugFiles.account').
   }]).
   factory('CurrentUserResource', ['$resource', function($resource) {
     return $resource('/api/v01/account/current', {}, {
-      fetch: {method: 'GET', isArray: false},
+      fetch: {method: 'GET', isArray: false}
     });
   }]);
