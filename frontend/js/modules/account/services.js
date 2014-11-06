@@ -1,5 +1,5 @@
-angular.module('pllugFiles.account').
-  factory('CurrentUser', ['$q', 'CurrentUserResource', 
+angular.module('pllugFiles.account')
+  .factory('CurrentUser', ['$q', 'CurrentUserResource', 
       function($q, CurrentUserResource) {
     var obj = {};
 
