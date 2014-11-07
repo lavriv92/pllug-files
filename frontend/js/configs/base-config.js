@@ -1,4 +1,5 @@
-pllugFiles.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+pllugFiles.config(['$routeProvider', '$locationProvider', 
+    function($routeProvider, $locationProvider) {
   $routeProvider.when('/', {
     templateUrl: '/templates/core/index.html',
     controller: 'IndexController'

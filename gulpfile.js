@@ -29,4 +29,15 @@ gulp.task('less', function() {
   .pipe(gulp.dest('./public/css/'));
 });
 
+gulp.task('templates', function() {
+  gulp.src('./frontend/templates/**/*.html')
+      .pipe(gulp.dest('./public/templates'));                               
+});
+
+gulp.task('watch', function() {
+  gulp.watch(['./frontend/js/**/*.js'], ['javascript']);
+  gulp.watch(['./frontend/less/**/*.less'], ['less']);
+  gulp.watch(['./frontend/templates/**/*.html'], ['templates']);
+})
+
 gulp.task('build', ['javascript', 'less']);
