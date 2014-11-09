@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pllugFiles.core').
   controller('IndexController', ['$scope', 'User', function($scope, User) {
     $scope.$watch('choice', function(old, newV) {

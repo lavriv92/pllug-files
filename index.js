@@ -9,7 +9,7 @@ var express = require('express'),
 var main = require('./app/main'),
     api = require('./app/api'),
     auth = require('./app/auth'),
-    config = require('./app/config/config');
+    config = require('./app/config');
 
 swig.setDefaults({cache: false});
 

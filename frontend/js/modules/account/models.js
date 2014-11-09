@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pllugFiles.account')
 .factory('User', ['$resource', function($resource) {
   return $resource('/api/v01/account/users/:pk/:action', {'id': '@id'}, {

@@ -1,5 +1,5 @@
 var User = require('./models').User,
-    config = require('../config/config'),
+    config = require('../config'),
     Storage = require('../storage');
 
 exports.users = function (req, res) {

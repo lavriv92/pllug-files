@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pllugFiles.account')
   .factory('CurrentUser', ['$q', 'CurrentUserResource', 
       function($q, CurrentUserResource) {

@@ -1,3 +1,5 @@
+'use strict'
+
 angular
   .module('pllugFiles.files')
     .controller('FileListController', ['$scope', function($scope) {

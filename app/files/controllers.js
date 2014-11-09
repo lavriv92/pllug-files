@@ -1,6 +1,6 @@
 var models = require('./models'),
     Storage = require('../storage'),
-    config = require('../config/config');
+    config = require('../config');
     
 var File = models.File,
     Directory = models.Directory;

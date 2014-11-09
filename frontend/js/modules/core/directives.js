@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pllugFiles.core').
   directive('leftPanel', ['CurrentUser', function(CurrentUser) {
     return {

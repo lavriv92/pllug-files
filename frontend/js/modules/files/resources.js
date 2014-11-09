@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('pllugFiles.files')
   .factory('DirectoryResource', ['$resource', function($resource) {
     return $resource('/api/v01/files/directories/:pk/:action', {
