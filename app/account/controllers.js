@@ -28,17 +28,16 @@ exports.createUser = function (req, res) {
   var user = new User(req.body),
       storage = new Storage(config.storagePath);
 
-  storage.newDir(user.username, function(absPath) {
-    user.save(function(err, user) {
-      if(err) {
-        res.status(400).json(err);
-      } else {
-        res.status(201).json(user)
-      }
-    });
-  }, 
-  function(err) {
-    res.status(500).json(err);
+  user.save(function(err, user) {
+    if(err) {
+      res.status(400).json(err);
+    } else {
+      storage.newDir(user._id, function(absPath) {
+        res.json(user);
+      }, function(err) {
+        res.status(500).json(err)
+      });
+    }
   });
 };
 

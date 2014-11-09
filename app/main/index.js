@@ -3,6 +3,6 @@ var express = require('express'),
 
 var main = module.exports = express.Router();
 
-main.get('/*', middlewares.requiresLogin, function (req, res) {
+main.get('/*', middlewares.requiresLogin, function (req, res) {          
   res.render('main/index');
 });

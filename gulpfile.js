@@ -31,7 +31,7 @@ gulp.task('less', function() {
 
 gulp.task('templates', function() {
   gulp.src('./frontend/templates/**/*.html')
-      .pipe(gulp.dest('./public/templates'));                               
+      .pipe(gulp.dest('./public/templates/'));                               
 });
 
 gulp.task('watch', function() {
@@ -40,4 +40,4 @@ gulp.task('watch', function() {
   gulp.watch(['./frontend/templates/**/*.html'], ['templates']);
 })
 
-gulp.task('build', ['javascript', 'less']);
+gulp.task('build', ['javascript', 'less', 'templates']);
