@@ -1,4 +1,5 @@
-var express = require('express'),
+var cluster = require('cluster');
+    express = require('express'),
     swig = require('swig'),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
@@ -35,6 +36,23 @@ app.use('/auth/', auth);
 app.use('/api/v01', api);
 app.use(main);
 
-app.listen(8124);
+if(cluster.isMaster) {
+  var numCPUs = require('os').cpus().length;
+  for(var i=0; i<numCPUs; i++) {
+    cluster.fork();
+  }
+  cluster.on('exit', function() {
+    console.log('pid died');
+  });
+} else {
+  var d = require('domain').create();
+  d.run(function() {
+    app.listen(1337, function() {
+      console.log("App run on http://0.0.0.0:1337");
+    });
+  });
 
-console.log("App run on http://0.0.0.0:8124");
+  d.on('error', function(err) {
+    console.log(err.message);
+  });
+} 
