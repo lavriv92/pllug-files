@@ -2,8 +2,12 @@ const koa = require('koa');
 
 const app = koa();
 
-app.use(function* () {
-	this.body = "App run";
-});
+const router = require('koa-router');
+
+const baseRouter = router()
+	.use('/', require('../handlers/home'));
+
+app.use(baseRouter.routes());
+
 
 module.exports = app;
