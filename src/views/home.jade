@@ -1,10 +1,7 @@
 extends ./layout
 
-
-extends ./layout
-
 block content
-     div.nav
+    div.nav
       div.navbar.navbar-default.navbar-fixed-top
        div.container-fluid
         div.navbar-header
@@ -36,4 +33,30 @@ block content
                 a(href="#") One more separeted link
            li
             a(href="#") Link
+ 
+     div#carousel.carousel.slide
+     ol.carousel-indicators
+      li.active(data-target="#carousel" , data-slide="0")
+      li(data-target="#carousel" , data-slide="0")
+      li(data-target="#carousel" , data-slide="0")
+     div.carousel-inner
+      div.item.active
+        img(src="http://www.seeger-greenenergy.com/assets/user/media/File_Exchange.jpg", alt="")
+        div.carousel-caption
+           h3 First slide
+           p Explanation
+      div.item
+        img(src="http://www.seeger-greenenergy.com/assets/user/media/File_Exchange.jpg", alt="")
+        div.carousel-caption
+           h3 Second slide
+           p Explanation
+      div.item
+        img(src="http://www.seeger-greenenergy.com/assets/user/media/File_Exchange.jpg", alt="")
+        div.carousel-caption
+           h3 Third slide
+           p Explanation
+     a.left.carousel-control(href="#carousel", data-slide="prev")
+      span.glyphicon.glyphicon-chevron-left
+     a.right.carousel-control(href="#carousel", data-slide="next")
+      span.glyphicon.glyphicon-chevron-right       
  
