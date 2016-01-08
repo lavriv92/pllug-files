@@ -1,5 +1,24 @@
 extends ./layout
  
 block content
-   div.container
-   h1 Login
+
+ form.form-horizontal(role="form")
+  div.form-group
+   label.control-label.col-lg-4(for="email") Email:
+   div.col-lg-4
+     input.form-control#email(type="email", placeholder="Enter email")   
+  div.form-group
+   label.control-label.col-lg-4(for="password") Password:
+   div.col-lg-4
+     input.form-control#pwd(type="password", placeholder="Enter password")  
+  div.form-group
+    div.col-lg-offset-4.col-lg-4
+      div.checkbox
+        label
+         input(type="checkbox")
+         | Remember me
+  div.form-group
+    div.col-lg-offset-4.col-lg-2
+      button.btn.btn-default(type="button") Submit
+        
+ 
