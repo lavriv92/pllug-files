@@ -2,11 +2,12 @@ extends ./layout
 
 block content
   div.container
-    div#loginbox.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:50px")
+    div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:50px")
       div.panel.panel-info
         div.panel-heading
           div.panel-title Sign In
-          div(style="float:right; font-size:80%; position:relative; top:-10px") Forgot password?
+          div(style="float:right; font-size:80%; position:relative; top:-10px") 
+           a(href="#") Forgot password?
         div.panel-body(style="padding-top:30px")
           div#login-alert.alert.alert-danger.col-sm-12(style="display:none")
           form#loginform.form-horizontal(role="form")
@@ -27,11 +28,10 @@ block content
                 <!==Button-->
                 div.col-md-12.controls
                   a#btn-login.btn.btn-success(href="#") Login
-                  a#btn-fblogin.btn.btn-primary(href="#", style="margin-left:3px") Login with Facebook
+                  a#btn-fblogin.btn.btn-primary(href="./registration", style="margin-left:3px") Login with Facebook
               div.form-group
                 div.col-md-12.control
                   div(style="border-top:1px solid#888; padding-top:15px; font-size:85%")
-                   | Don't have an accont!
-                  a(href="#")
-                   | Sign Up Here
+                    |Don't have an account!
+                    a(href="./registration")   Sign Up Here
    
