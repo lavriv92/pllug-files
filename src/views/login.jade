@@ -1,8 +1,9 @@
 extends ./layout
 
 block content
-  div.container
-    div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:50px")
+ div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px")
+  div.container(style="opacity:0.9")
+    div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:250px")
       div.panel.panel-info
         div.panel-heading
           div.panel-title Sign In
@@ -23,7 +24,7 @@ block content
                 div.checkbox
                   label
                     input#login-remember(type="checkbox", name="remember", value="1")
-                    | Remamber me
+                    | Remember me
               div.form-group(style="margin-top:10px")
                 <!==Button-->
                 div.col-md-12.controls
