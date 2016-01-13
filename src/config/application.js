@@ -1,13 +1,23 @@
+//const koa = require('koa');
+//const app = koa();
+//const router = require('koa-router');
+
 const koa = require('koa');
+const app = module.exports = koa();
 
-const app = koa();
+app.use(require('koa-bodyparser')());
+//app.keys = ['secret'];
 
-const router = require('koa-router');
-
-const baseRouter = router()
-	.use('/', require('../handlers/home'))
-	.use('/account',require('../handlers/account'));
-app.use(baseRouter.routes());
+//require('../lib/auth');
+//app.use(require('koa-session')(app));
+//app.use(passport.initialize());
+//app.use(passport.session());
 
 
-module.exports = app;
+app.use(require('../handlers/home'));
+app.use(require('../handlers/account'));
+//app.use(require('../handlers/about'));
+//app.use(require('../handlers/admin'));
+
+//app.use(require('../lib/styles'));
+//app.use(require('../lib/serve'));
