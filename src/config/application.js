@@ -6,8 +6,7 @@ const router = require('koa-router');
 
 const baseRouter = router()
 	.use('/', require('../handlers/home'))
-	.use('/login',require('../handlers/login'))
-	.use('/registration',require('../handlers/registration'));
+	.use('/account',require('../handlers/account'));
 app.use(baseRouter.routes());
 
 

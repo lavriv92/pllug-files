@@ -1,14 +1,14 @@
-extends ./layout
+extends ../layout
 
 block content
- div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/city-wallpaper-18.jpg'); height:1000px")
+ div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/city-wallpaper-18.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
   div.container(style="opacity:0.8")
     div.mainbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style="margin-top:220px")
        div.panel.panel-info(style="height:auto")
         div.panel-heading
           div.panel-title Sign Up
           div(style="float:right; font-size: 85%; position: relative; top:-10px")
-            a(href="./login") Sign In
+            a(href="./signin") Sign In
         div.panel-body
           form#singupalert.alert.alert-danger(style="display:none")
             p Error:
@@ -35,7 +35,4 @@ block content
               span(style="margin-left:8px; ") or 
           div.form-group(style="border-top:1px solid #999; margin-top:260px ")
             div.col-md-offset-3.col-md-9
-              button#btn-fbsignup.btn.btn-primary.icon-facebook(type="button", style="margin-top:10px") Sign Up with Facebook
-               
-
-      
+              button#btn-fbsignup.btn.btn-primary.icon-facebook(type="button", style="margin-top:10px") Sign Up with Facebook       

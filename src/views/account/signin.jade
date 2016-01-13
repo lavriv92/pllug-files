@@ -1,7 +1,7 @@
-extends ./layout
+extends ../layout
 
 block content
- div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px")
+ div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
   div.container(style="opacity:0.9")
     div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:250px")
       div.panel.panel-info
@@ -29,10 +29,10 @@ block content
                 <!==Button-->
                 div.col-md-12.controls
                   a#btn-login.btn.btn-success(href="#") Login
-                  a#btn-fblogin.btn.btn-primary(href="./registration", style="margin-left:3px") Login with Facebook
+                  a#btn-fblogin.btn.btn-primary(href="./signup", style="margin-left:3px") Login with Facebook
               div.form-group
                 div.col-md-12.control
                   div(style="border-top:1px solid#888; padding-top:15px; font-size:85%")
                     |Don't have an account!
-                    a(href="./registration")   Sign Up Here
+                    a(href="./signup")   Sign Up Here
    
