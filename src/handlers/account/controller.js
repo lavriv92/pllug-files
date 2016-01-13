@@ -8,6 +8,11 @@ exports.signin = function *() {
 exports.signup = function *() {
 	this.body = yield render('account/signup');
 };
+
+exports.forgotPassword = function* () {
+  this.body = yield render('account/forgot-password');
+};
+
 /*exports.signin = function* () {
   this.body = yield render('account/signin');
 };
@@ -36,6 +41,5 @@ exports.createUser = function* () {
   }
 };
 
-exports.forgotPassword = function* () {
-  this.body = yield render('account/forgot-password');
+
 };*/
