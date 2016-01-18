@@ -3,9 +3,9 @@ const controller = require('./controller');
 
 const account = router()
   .get('/signin', controller.signin)
-  //.post('/signin', controller.localLogin)
+  .post('/signin', controller.localLogin)
   .get('/signup', controller.signup)
-  //.post('/signup', controller.createUser)
+  .post('/signup', controller.createUser)
   .get('/forgot-password', controller.forgotPassword);
 
 module.exports = router()

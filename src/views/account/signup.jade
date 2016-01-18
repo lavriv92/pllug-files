@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
- div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/city-wallpaper-18.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
+ div.signin-container(style="background-image: url('http://www.intrawallpaper.com/static/images/city-wallpaper-18.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
   div.container(style="opacity:0.8")
     div.mainbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style="margin-top:220px")
        div.panel.panel-info(style="height:auto")
@@ -10,29 +10,30 @@ block content
           div(style="float:right; font-size: 85%; position: relative; top:-10px")
             a(href="./signin") Sign In
         div.panel-body
-          form#singupalert.alert.alert-danger(style="display:none")
-            p Error:
-            span
-          div.form-group
-            label.col-md-3.control-label Email
-            div.col-md-9
-             input.form-control(type="text", name="email", placeholder="Email Address")
-          div.form-group
-            label.col-md-3.control-label(style="margin-top:20px") First Name
-            div.col-md-9
-              input.form-control(type="text", name="firstname", placeholder="First Name" style="margin-top:20px")
-          div.form-group
-            label.col-md-3.control-label(style="margin-top:20px") Last Name
-            div.col-md-9
-              input.form-control(type="text", name="lastname", placeholder="Last Name" style="margin-top:20px")
-          div.form-group
-            label.col-md-3.control-label(style="margin-top:20px") Password
-            div.col-md-9
-              input.form-control(type="password", name="passwd", placeholder="Password" style="margin-top:20px")
-          div.form-group
-            div.col-md-offset-3.col-md-9(style="margin-top:20px")
-              button#btn-signup.btn.btn-info.icon-hand-right(type="button")  &nbsp Sign Up               
-              span(style="margin-left:8px; ") or 
-          div.form-group(style="border-top:1px solid #999; margin-top:260px ")
-            div.col-md-offset-3.col-md-9
-              button#btn-fbsignup.btn.btn-primary.icon-facebook(type="button", style="margin-top:10px") Sign Up with Facebook       
+          form.signin-form(method="POST")
+            div.form-group
+              label.col-md-3.control-label Email
+              div.col-md-9
+               input.form-control(type="text", name="email", placeholder="Email Address")
+            div.form-group
+              label.col-md-3.control-label(style="margin-top:20px") First Name
+              div.col-md-9
+                input.form-control(type="text", name="firstname", placeholder="First Name" style="margin-top:20px")
+            div.form-group
+              label.col-md-3.control-label(style="margin-top:20px") Last Name
+              div.col-md-9
+                input.form-control(type="text", name="lastname", placeholder="Last Name" style="margin-top:20px")
+            div.form-group
+              label.col-md-3.control-label(style="margin-top:20px") Password
+              div.col-md-9
+                input.form-control(type="password", name="password", placeholder="Password" style="margin-top:20px")
+            div.form-group
+              label.col-md-3.control-label(style="margin-top:20px") Password
+              div.col-md-9
+                input.form-control(type="password", name="confirmPassword", placeholder="Password" style="margin-top:20px")
+            div.form-group
+              div.col-md-offset-3.col-md-9(style="margin-top:20px")
+                input.btn.btn-info.signin-button(type="submit", value="Register", style="color:black; font-size:16px;font-weight:bold") 
+            //div.form-group(style="border-top:1px solid #999; margin-top:260px ")
+              div.col-md-offset-3.col-md-9
+                button.btn.btn-primary.icon-facebook(type="button", style="margin-top:10px") Sign Up with Facebook 

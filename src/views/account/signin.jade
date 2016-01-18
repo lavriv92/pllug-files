@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
- div.container-frluid(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
+ div.signin-container(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
   div.container(style="opacity:0.9")
     div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:250px")
       div.panel.panel-info
@@ -10,25 +10,25 @@ block content
           div(style="float:right; font-size:80%; position:relative; top:-10px") 
            a(href="./forgot-password") Forgot password?
         div.panel-body(style="padding-top:30px")
-          div#login-alert.alert.alert-danger.col-sm-12(style="display:none")
-          form#loginform.form-horizontal(role="form")
+          div.alert.alert-danger.col-sm-12(style="display:none")
+          form.signin-form.form-horizontal(method="POST")
             div.input-group(style="margin-bottom:25px")
                 span.input-group-addon
                    i.glyphicon.glyphicon-user
-                input.form-control#login-username(type="text", name="username", vale="", placeholder="username or email")
+                input.form-control.input(type="text", name="email", value="", placeholder="username or email")
              div.input-group(style="margin-bottom:25px")      
                 span.input-group-addon
                    i.glyphicon.glyphicon-lock
-                input.form-control#login-password(type="password", name="password", vale="", placeholder="password")
+                input.form-control.input(type="password", name="password", value="", placeholder="password")
               div.input-group
                 div.checkbox
                   label
-                    input#login-remember(type="checkbox", name="remember", value="1")
+                    input(type="checkbox", name="remember", value="")
                     | Remember me
               div.form-group(style="margin-top:10px")
                 <!==Button-->
                 div.col-md-12.controls
-                  a#btn-login.btn.btn-success(href="#") Login
+                  input.btn.btn-success.signin-button(type="submit", value="Login")
                   a#btn-fblogin.btn.btn-primary(href="./signup", style="margin-left:3px") Login with Facebook
               div.form-group
                 div.col-md-12.control

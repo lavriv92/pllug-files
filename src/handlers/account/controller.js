@@ -1,10 +1,11 @@
 const render = require('../../lib/render');
-//const passport = require('koa-passport');
-//const User = require('../../db/models/User');
+const passport = require('koa-passport');
+const User = require('../../db/models/User');
 
 exports.signin = function *() {
 	this.body = yield render('account/signin');
 };
+
 exports.signup = function *() {
 	this.body = yield render('account/signup');
 };
@@ -13,17 +14,13 @@ exports.forgotPassword = function* () {
   this.body = yield render('account/forgot-password');
 };
 
-/*exports.signin = function* () {
-  this.body = yield render('account/signin');
-};
 exports.localLogin = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/account/signin',
   failureFlash: true
 });
-exports.signup = function* () {
-  this.body = yield render('account/signup');
-};
+
+
 exports.createUser = function* () {
   try {
     var body = this.request.body
@@ -41,5 +38,3 @@ exports.createUser = function* () {
   }
 };
 
-
-};*/

@@ -5,10 +5,10 @@ const app = module.exports = koa();
 app.use(require('koa-bodyparser')());
 app.keys = ['secret'];
 
-//require('../lib/auth');
-//app.use(require('koa-session')(app));
-//app.use(passport.initialize());
-//app.use(passport.session());
+require('../lib/auth');
+app.use(require('koa-session')(app));
+app.use(passport.initialize());
+app.use(passport.session());
 
 
 app.use(require('../handlers/home'));
