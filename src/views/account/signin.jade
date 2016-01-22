@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
- div.signin-container(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
+ div.signin-container(style=" height:1000px;background-repeat:no-repeat;background-position: center; ")
   div.container(style="opacity:0.9")
     div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:250px")
       div.panel.panel-info
@@ -25,7 +25,7 @@ block content
                   label
                     input(type="checkbox", name="remember", value="")
                     | Remember me
-              div.form-group(style="margin-top:10px")
+              div#test.form-group(style="margin-top:10px")
                 <!==Button-->
                 div.col-md-12.controls
                   input.btn.btn-success.signin-button(type="submit", value="Login")

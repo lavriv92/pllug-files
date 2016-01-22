@@ -2,6 +2,7 @@ const koa = require('koa');
 const passport = require('koa-passport');
 const app = module.exports = koa();
 
+
 app.use(require('koa-bodyparser')());
 app.keys = ['secret'];
 
@@ -17,3 +18,4 @@ app.use(require('../handlers/account'));
 
 app.use(require('../lib/styles'));
 app.use(require('../lib/serve'));
+app.use(require('../lib/less'));

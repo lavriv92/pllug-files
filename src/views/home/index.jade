@@ -1,61 +1,10 @@
 extends ../layout
 
 block content
-    div.nav
-      div.navbar.navbar-default.navbar-vertical-fixed-top
-       div.container-fluid
-        div.navbar-header
-          button.navbar-toggle(data-toggle='collapse' data-target='#responsive-menu') 
-           span.sr-only Toggle navigation
-           span.icon-bar
-           span.icon-bar
-           span.icon-bar
-          a.navbar-brand(href="#") PLLUG File Exchanger 
-        div.collapse.navbar-collapse#responsive-menu    
-          ul.nav.navbar-nav
-           li
-            a(href="#") Link
-           li
-            a(href="./account/signin") Login
-           li.dropdown
-            a.dropdown-toggle(href="#", data-toggle="dropdown") Dropdown
-             b.caret
-             ul.dropdown-menu 
-              li
-                a(href="#") Action
-              li
-                a(href="#") Another action
-              li
-                a(href="#") Something else here
-              li
-                a(href="#") Separated link
-              li
-                a(href="#") One more separeted link
-              li
-                a(href="#") Login
- 
-     div#carousel.carousel.slide
-     ol.carousel-indicators
-      li.active(data-target="#carousel" , data-slide="0")
-      li(data-target="#carousel" , data-slide="0")
-      li(data-target="#carousel" , data-slide="0")
-     div.carousel-inner
-      div.item.active
-        img(src="http://www.seeger-greenenergy.com/assets/user/media/File_Exchange.jpg", alt="")
-        div.carousel-caption
-           h3 First slide
-           p Explanation
-      div.item
-        img(src="http://www.seeger-greenenergy.com/assets/user/media/File_Exchange.jpg", alt="")
-        div.carousel-caption
-           h3 Second slide
-           p Explanation
-      div.item
-        img(src="http://www.seeger-greenenergy.com/assets/user/media/File_Exchange.jpg", alt="")
-        div.carousel-caption
-           h3 Third slide
-           p Explanation
-     a.left.carousel-control(href="#carousel", data-slide="prev")
-      span.glyphicon.glyphicon-chevron-left
-     a.right.carousel-control(href="#carousel", data-slide="next")
-      span.glyphicon.glyphicon-chevron-right    
+  div(class="account-links")
+    a.btn.btn-success(href="/account/signin") Sign in
+    a.btn.btn-primary(href="/account/signup") Sign up
+  div.video
+    video(autoplay="autoplay" loop="true" id="bgvideo")
+      source(src="/videos/home-video.mp4" type="video/mp4")
+
