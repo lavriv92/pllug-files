@@ -17,7 +17,14 @@ exports.forgotPassword = function* () {
 exports.localLogin = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/account/signin',
-  failureFlash: true
+});
+
+exports.facebook =  passport.authenticate('facebook', 
+  { scope: ['read_stream', 'publish_actions'] });
+
+exports.facebookCallback = passport.authenticate('facebook', {
+  successRedirect: '/',
+  failureRedirect: '/account/signin',
 });
 
 
@@ -37,4 +44,6 @@ exports.createUser = function* () {
     this.body = yield render('account/signup', { errors: e.message });
   }
 };
+
+
 

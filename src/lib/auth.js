@@ -1,5 +1,7 @@
 const passport = require('koa-passport');
 const LocalStrategy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+
 
 const User = require('../db/models/User');
 
@@ -31,3 +33,16 @@ passport.use(new LocalStrategy({
     }
   });
 }));
+
+passport.use(new FacebookStrategy({
+    clientID: 941018495979482,
+    clientSecret: b772afb699e70744c2ab0c68794e7d4e,
+    callbackURL: "http://127.0.0.1:3000/auth/facebook/callback"
+  },
+  function(accessToken, refreshToken, profile, done) {
+    User.findOrCreate(..., function(err, user) {
+      if (err) { return done(err); }
+      done(null, user);
+    });
+  }
+));*/

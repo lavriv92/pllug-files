@@ -7,6 +7,8 @@ const account = router()
   .get('/signup', controller.signup)
   .post('/signup', controller.createUser)
   .get('/forgot-password', controller.forgotPassword);
+  .get('/auth/facebook', controller.facebook)
+  .get('/auth/facebook/callback', controller.facebookCallback);
 
 module.exports = router()
   .use('/account', account.routes())
