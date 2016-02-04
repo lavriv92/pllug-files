@@ -6,6 +6,7 @@ const app = module.exports = koa();
 app.use(require('koa-bodyparser')());
 app.keys = ['secret'];
 
+app.use(require('../handlers/account/session-middelware'));
 require('../lib/auth');
 app.use(require('koa-session')(app));
 app.use(passport.initialize());

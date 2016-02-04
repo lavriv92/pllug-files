@@ -17,7 +17,6 @@ exports.forgotPassword = function* () {
 exports.localLogin = passport.authenticate('local', {
   successRedirect: '/',
   failureRedirect: '/account/signin',
-  failureFlash: true
 });
 
 
