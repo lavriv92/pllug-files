@@ -2,6 +2,7 @@ const render = require('../../lib/render');
 const passport = require('koa-passport');
 const User = require('../../db/models/User');
 
+
 exports.signin = function *() {
 	this.body = yield render('account/signin');
 };
@@ -36,4 +37,5 @@ exports.createUser = function* () {
     this.body = yield render('account/signup', { errors: e.message });
   }
 };
+
 
