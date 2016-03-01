@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
- div.signin-container(style=" height:1000px;background-repeat:no-repeat;background-position: center; ")
+ div.signin-container(style="background-image: url('http://www.intrawallpaper.com/static/images/Hd-Backgrounds-371.jpg'); height:1000px;background-repeat:no-repeat;background-position: center; ")
   div.container(style="opacity:0.9")
     div.mainbox.col-sm-offset-3.col-sm-6(style="margin-top:250px")
       div.panel.panel-info
@@ -25,11 +25,12 @@ block content
                   label
                     input(type="checkbox", name="remember", value="")
                     | Remember me
-              div#test.form-group(style="margin-top:10px")
+              div.form-group(style="margin-top:10px")
                 <!==Button-->
                 div.col-md-12.controls
                   input.btn.btn-success.signin-button(type="submit", value="Login")
                   a#btn-fblogin.btn.btn-primary(href="/auth/facebook", style="margin-left:3px") Login with Facebook
+                  a.btn.btn-warning(href="/auth/github", style="margin-left:3px") Login with Github
               div.form-group
                 div.col-md-12.control
                   div(style="border-top:1px solid#888; padding-top:15px; font-size:85%")

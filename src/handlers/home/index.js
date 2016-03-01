@@ -1,15 +1,24 @@
-const Router = require('koa-router');
-const controller = require('./controller');
-const securedRouter = new Router();
+const router = require('koa-router');
 
-const homeRouter = Router()
-	.get('/', controller.home)
-	.get('/auth/github', controller.github)
-    .get('/auth/github/callback', controller.githubCallback)
-    .get('/auth/facebook', controller.facebook)
-    .get('/auth/facebook/callback', controller.facebookCallback)
-    .get('/auth/google', controller.google)
-    .get('/auth/google/return', controller.googleCallback);
+const controller = require('./controller');
+
+function *authed(next){
+  if (this.req.isAuthenticated()){
+    yield next;
+    console.log('isAuthenticated is success');
+  } else {
+    this.redirect('/account/signin');
+  }
+};
+
+
+const homeRouter = router()
+  .get('/', authed, controller.home)
+  .get('/logout', controller.logout)
+  .get('/auth/github', controller.github)
+  .get('/auth/github/callback', controller.githubCallback)
+  .get('/auth/facebook', controller.facebook)
+  .get('/auth/facebook/callback', controller.facebookCallback);
 
 
 module.exports = homeRouter.routes();

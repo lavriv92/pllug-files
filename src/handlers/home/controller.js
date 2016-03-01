@@ -1,22 +1,19 @@
 const render = require('../../lib/render');
 const passport = require('koa-passport');
-//const Router = require('koa-router');
+const bodyParser = require('koa-bodyparser');
+const User = require('../../db/models/User');
 
-
- function *authed(next){
-  if (this.req.isAuthenticated()){
-    yield next;
-  } else {
-    this.redirect('/account/signin');
-  }
+exports.home =    function *() {
+	this.body = JSON.stringify(this.req.user);
+  //console.log(this.req.user);
 };
 
-exports.home = authed,function *() {
-	this.body = yield render('home/index');
+exports.logout = function *() {
+  this.session = null;
+  this.redirect('/account/signin');
 };
 
-exports.github = passport.authenticate('github', {
-  scope: ['user','repo']});
+exports.github = passport.authenticate('github');
 
 exports.githubCallback = passport.authenticate('github', {
   successRedirect: '/', 
@@ -24,19 +21,20 @@ exports.githubCallback = passport.authenticate('github', {
 });
 
 
-exports.securedRouter = authed, function *(){
-  this.body = 'Secured Zone: koa-tutorial\n' 
-     + JSON.stringify(this.req.user, null, '\t');
-};
 
-exports.facebook = passport.authenticate('facebook');
+exports.facebook =   passport.authenticate('facebook');
+
 exports.facebookCallback = passport.authenticate('facebook', {
-    successRedirect: '/',
-    failureRedirect: '/account/signin'
-})
+ failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/');
+  };
+
 
 exports.google = passport.authenticate('google');
+
 exports.googleCallback = passport.authenticate('google',{ 
-    successRedirect: '/',
+    successRedirect: '/profile',
     failureRedirect: '/account/signin',
 });

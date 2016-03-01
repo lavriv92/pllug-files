@@ -2,7 +2,6 @@ const render = require('../../lib/render');
 const passport = require('koa-passport');
 const User = require('../../db/models/User');
 
-
 exports.signin = function *() {
 	this.body = yield render('account/signin');
 };
@@ -16,8 +15,8 @@ exports.forgotPassword = function* () {
 };
 
 exports.localLogin = passport.authenticate('local', {
-  successRedirect: '/',
-  failureRedirect: '/account/signin',
+  successRedirect: '/profile',
+  failureRedirect: '/',
 });
 
 
@@ -37,5 +36,4 @@ exports.createUser = function* () {
     this.body = yield render('account/signup', { errors: e.message });
   }
 };
-
 
