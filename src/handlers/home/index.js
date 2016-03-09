@@ -11,9 +11,8 @@ function *authed(next){
   }
 };
 
-
 const homeRouter = router()
-  .get('/', authed, controller.home)
+  .get('/', controller.home)
   .get('/logout', controller.logout)
   .get('/auth/github', controller.github)
   .get('/auth/github/callback', controller.githubCallback)

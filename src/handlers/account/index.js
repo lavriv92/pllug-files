@@ -3,7 +3,7 @@ const controller = require('./controller');
 
 const account = router()
   .get('/signin', controller.signin)
-  //.post('/signin', controller.localLogin)
+  .post('/signin', controller.locaLogin)
   .get('/signup', controller.signup)
   .post('/signup', controller.createUser)
   .get('/forgot-password', controller.forgotPassword);

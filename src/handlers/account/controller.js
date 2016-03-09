@@ -14,7 +14,7 @@ exports.forgotPassword = function* () {
   this.body = yield render('account/forgot-password');
 };
 
-exports.localLogin = passport.authenticate('local', {
+exports.locaLogin = passport.authenticate('local', {
   successRedirect: '/profile',
   failureRedirect: '/',
 });
