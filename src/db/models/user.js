@@ -9,7 +9,7 @@ function cryptPassword(password) {
 }
 
 const userSchema = new mongoose.Schema({
-  email: { type: String, unique: true },
+  email: { type: String },
   password: { type: String, set: cryptPassword },
   fisrtName: { type: String },
   lastName: { type: String },

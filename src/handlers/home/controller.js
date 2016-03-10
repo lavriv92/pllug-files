@@ -13,13 +13,13 @@ exports.logout = function *() {
   this.redirect('/account/signin');
 };
 
-exports.github = passport.authenticate('github');
+exports.github = passport.authenticate('github', {
+ scope: [ 'user:email' ] });
 
 exports.githubCallback = passport.authenticate('github', {
-  successRedirect: '/', 
-  failureRedirect: '/account/signin',
+  successRedirect: '/profile',
+  failureRedirect: '/',
 });
-
 
 
 exports.facebook =  passport.authenticate('facebook');

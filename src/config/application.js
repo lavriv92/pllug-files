@@ -13,13 +13,14 @@ app.use(reqlogger);
 
 
 app.use(require('koa-bodyparser')());
+app.use(require('koa-session')(app));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.keys = ['secret'];
 
 app.use(require('../handlers/home'));
 require('../lib/auth');
-app.use(require('koa-session')(app));
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(require('../handlers/account'));
 
