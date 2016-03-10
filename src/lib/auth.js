@@ -6,21 +6,19 @@ const User = require('../db/models/User');
 
 
 passport.use(new GithubStrategy({
-    clientID: 'e491753ccfd23a0c8420',
-    clientSecret:'5de1562ada98b3c4a8a489a51c296ac8bc213298',
+    clientID: '3b6af85581b39846aaf0',
+    clientSecret:'cfd2bac212919677811eb98df620b3a2ee94f362',
     callbackURL: "http://localhost:3000/auth/github/callback",
-    scope: 'email'
+    //scope: 'email'
   },
 function(accessToken, refreshToken, profile, done) {
-  User.findOne({githubId : profile.id}).exec(function(err, user){
-            if(err)
-              return done(err);
-            if(user)
-              return done(null, user);
-              console.log(profile);
-        });
-    }
-  ));
+    User.findOrCreate({ githubId: profile.id }, function (err, user) {
+      console.log(profile);
+      return done(err, user);
+    });
+  }
+));
+
 
 passport.use(new LocalStrategy({
   usernameField: 'email'
