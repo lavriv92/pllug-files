@@ -36,3 +36,7 @@ exports.googleCallback = passport.authenticate('google',{
     successRedirect: '/profile' ,
     failureRedirect: '/account/signin',
 });
+
+exports.profile = function* (){
+  this.body = yield render('home/profile');
+}
