@@ -2,6 +2,7 @@ const render = require('../../lib/render');
 const passport = require('koa-passport');
 const bodyParser = require('koa-bodyparser');
 const User = require('../../db/models/User');
+const async = require('async');
 
 exports.home =   function *() {
   this.body = yield render('home/index');
@@ -36,7 +37,3 @@ exports.googleCallback = passport.authenticate('google',{
     successRedirect: '/profile' ,
     failureRedirect: '/account/signin',
 });
-
-exports.profile = function* (){
-  this.body = yield render('home/profile');
-}

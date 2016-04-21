@@ -55,9 +55,11 @@ passport.use(new FacebookStrategy({
     clientSecret:'efb75cf75298a19efc2b455a28acb78a',
     callbackURL: "http://localhost:3000/auth/facebook/callback",
     //profileFields: ['id', 'displayName', 'photos', 'email']
+    profileFields: ['id', 'displayName', 'picture']
   },
 function(accessToken, refreshToken, profile, cb) {
-    User.findOrCreate({ providerId: profile.id }, 
+  console.log('profile: %s', JSON.stringify(profile));
+    User.findOrCreate({ providerId: profile.id, fisrtName: profile.displayName, picture: profile.photos[0].value }, 
       function (err, user) {
       return cb(err, user);
     });

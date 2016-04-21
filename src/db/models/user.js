@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
   created: { type: Date, default: new Date() },
   providerId:{ type: String },
   accessToken:{ type: String },
-  githubId:{ type: String }
+  githubId:{ type: String },
+  picture: { type: String }
 });
 
 userSchema.methods.authenticate = function (password) {

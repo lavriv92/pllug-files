@@ -12,9 +12,8 @@ function *authed(next){
 };
 
 const homeRouter = router()
-  .get('/', controller.home)
+  .get('/', authed,controller.home)
   .get('/logout', controller.logout)
-  .get('/profile', controller.profile)
   .get('/auth/github', controller.github)
   .get('/auth/github/callback', controller.githubCallback)
   .get('/auth/facebook', controller.facebook)
